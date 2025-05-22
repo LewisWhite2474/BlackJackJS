@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Game</title>
+</head>
+<body>
+    <div class="table-area">
+        <div class="dealer-hand">
+            <h2>Dealer's Hand</h2>
+            <div class="card-container" id="dealer-cards">
+                <!-- Dealer cards will be shown here -->
+            </div>
+            <div class="value-container" id="dealer-value">Value: 0</div>
+        </div>
+    
+        <div class="player-hand">
+            <h2>Your Hand</h2>
+            <div class="card-container" id="player-cards">
+                <!-- Player cards will be shown here -->
+            </div>
+            <div class="value-container" id="player-value">Value: 0</div>
+        </div>
+
+
+            <div class="action-buttons" id="action-buttons">
+                <button id="hit-button" class="center-button" >Hit</button>
+                <button id="stand-button" class="center-button" >Stand</button>
+                <button id="split-button" class="center-button" disabled>Split</button>
+                <button id="double-button" class="center-button">Double</button>
+            </div>
+            <div id="bet-balance-container">
+                <div id="balance-container">
+                    Balance: $<span id="balance-display">1000</span>
+                    Bet: $<span id="bet-display">0</span>
+                </div>
+
+                <div id="bet-container">
+                    <input type="number" id="bet-input" placeholder="Enter bet amount" min="1">
+                    <button id="place-bet-button" class="game-button">Place Bet</button>
+                </div>
+            </div>
+        <div id ="outcome-field" style="display: none">You Lost!</div>
+        <button id="restart-button" style="display: none">Press to restart</button>    
+    </div>   
+    <script type="module" src="game.js"></script>
+</body>
+</html>

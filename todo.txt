@@ -1,0 +1,14 @@
+done - Implement blackjack rules
+done - implement hidden dealer card
+done - Implement Double button
+Implement Split button
+Implement saving funds feature
+Implement multiple hands
+
+Fix UI:
+done - Add card sprites
+-Add Sounds
+-Better colours
+-card animations
+-Chip system
+-add background music

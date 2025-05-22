@@ -1,0 +1,88 @@
+.center-container {
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Fill entire viewport height */
+    width: 100vw;  /* Full width (optional) */
+    box-sizing: border-box;  
+}
+
+.center-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.header-bold {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;  
+}
+.table-area {
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Fill entire viewport height */
+    width: 100vw;  /* Full width (optional) */
+    box-sizing: border-box;  
+}
+
+.card-container{
+    display: flex;
+    font-size: 16px;
+    flex-direction: row;  /* This is actually default, but safe to be explicit */
+    gap: 10px;            /* Adds space between cards */
+}
+
+.card {
+    width: 80px;
+    height: 120px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin:8px;
+}
+
+.action-buttons {
+    display: none;
+    flex-direction: row;   /* Puts buttons side by side */
+    gap: 10px;             /* Adds space between buttons */
+    justify-content: center; /* Optional: centers buttons horizontally */
+    margin-top: 20px;      /* Optional: space above buttons */
+}
+
+.value-container {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+
+#bet-container, #balance-container {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+#restart-button {
+    margin-top: 50px; /* pushes it down */
+    padding: 10px 20px; /* adds some space inside the div */
+    border: 2px solid black; /* gives it a black border */
+    display: none; /* keep it hidden until shown by JS */
+    cursor: pointer; /* makes it look clickable */
+    text-align: center; /* centers the text */
+    width: fit-content; /* makes the div fit the text */
+    border-radius: 5px; /* rounded corners (optional but looks nice) */
+    background-color: #f0f0f0; /* optional, light background */
+}
+
+
