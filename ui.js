@@ -33,8 +33,6 @@ restartButton.addEventListener('click', () => {
 
 function resetGame(){
 
-    const betBalance = document.getElementById('bet-balance-container');
-    const buttons = document.getElementById('action-buttons');
     const outcome = document.getElementById('outcome-field');
 
     gameState.playerHand = [];
@@ -51,11 +49,7 @@ function resetGame(){
     restartButton.style.display = 'none';
     outcome.style.display = 'none';
 
-    document.getElementById('place-bet-button').style.display = "flex";
-    document.getElementById('bet-input').style.display = "flex";
-    document.getElementById('bet-input').value = '';
-    
-    betBalance.style.display = 'flex';
+    showBet();
 
     calculateValueSum("player-cards");
     calculateValueSum("dealer-cards");
@@ -82,8 +76,31 @@ async function revealDealerCard() {
     calculateValueSum();
 }
 
+function hideBet(){
+    document.getElementById('bet-container').style.display = "none";
+    //document.getElementById('bet-display').style.display = "none";
+}
+
+function showBet(){
+    document.getElementById('bet-container').style.display = "flex";
+    // const betBalance = document.getElementById('bet-balance-container');
+
+    // document.getElementById('place-bet-button').style.display = "flex";
+    // document.getElementById('bet-display').style.display = "flex";
+    // document.getElementById('bet-display').textContent = '';
+    
+    // betBalance.style.display = 'flex';
+
+}
+
+function hideAction(){
+    document.getElementById('action-buttons').style.display = "none";
+}
+function showAction(){
+    document.getElementById('action-buttons').style.display = "flex";
+}
 
 
 window.onload = updateBalanceDisplay;
 
-export { calculateValueSum, updateBalanceDisplay, revealDealerCard};
+export { calculateValueSum, updateBalanceDisplay, revealDealerCard, showAction, hideBet, hideAction};

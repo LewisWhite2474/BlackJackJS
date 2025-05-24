@@ -26,23 +26,34 @@
         </div>
 
 
+
+            <div class="controls-wrapper">
+                <div id="bet-balance-container">
+                    <div id="balance-container">
+                        Balance: $<span id="balance-display">1000</span>
+                        Bet: $<span id="bet-display">0</span>
+                    </div>
+
+                    <div id="bet-container">
+                        <button id="25-button" class="game-button">+25</button>
+                        <button id="50-button" class="game-button">+50</button>
+                        <button id="100-button" class="game-button">+100</button>
+                        <button id="250-button" class="game-button">+250</button>
+                        <button id="500-button" class="game-button">+500</button>
+
+
+                        <button id="place-bet-button">Place Bet</button>
+                    </div>
+                </div>
+            
             <div class="action-buttons" id="action-buttons">
                 <button id="hit-button" class="center-button" >Hit</button>
                 <button id="stand-button" class="center-button" >Stand</button>
                 <button id="split-button" class="center-button" disabled>Split</button>
                 <button id="double-button" class="center-button">Double</button>
-            </div>
-            <div id="bet-balance-container">
-                <div id="balance-container">
-                    Balance: $<span id="balance-display">1000</span>
-                    Bet: $<span id="bet-display">0</span>
-                </div>
+            </div>    
+        </div>
 
-                <div id="bet-container">
-                    <input type="number" id="bet-input" placeholder="Enter bet amount" min="1">
-                    <button id="place-bet-button" class="game-button">Place Bet</button>
-                </div>
-            </div>
         <div id ="outcome-field" style="display: none">You Lost!</div>
         <button id="restart-button" style="display: none">Press to restart</button>    
     </div>   

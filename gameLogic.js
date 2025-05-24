@@ -1,10 +1,9 @@
 import { addCardToHand, playerBust } from './hand.js';
-import { calculateValueSum, revealDealerCard, updateBalanceDisplay } from './ui.js';
+import { calculateValueSum, revealDealerCard, updateBalanceDisplay, hideAction, hideBet } from './ui.js';
 import { fillDeck, shuffle } from './deck.js';
-import {deck, gameState} from './game.js';
+import {gameState} from './game.js';
 import {doubleBet } from './money.js';
 
-const buttons = document.getElementById('action-buttons')
 const normalMult = 2;
 const blackjackMult = 2.5;
 
@@ -12,10 +11,11 @@ async function playerAction(action){
     switch (action) {
         //hit
         case "H":
-            await addCardToHand("player-cards", deck.pop(), gameState.playerHand);
+            await addCardToHand("player-cards", gameState.deck.pop(), gameState.playerHand);
             console.log("Player total:" + gameState.playerTotal);
             if(playerBust()){
                 playerLose()
+                revealDealerCard();
             }else if(gameState.playerTotal === 21){
                 dealerTurn();
             }
@@ -60,7 +60,7 @@ function checkWinner(){
 }
 
 async function dealerTurn(){
-    document.getElementById('action-buttons').style.display = "none";
+    hideAction();
 
     await revealDealerCard();
 
@@ -80,7 +80,6 @@ async function dealerTurn(){
 function playerWin(multiplyer){
     const outcome = document.getElementById('outcome-field');
     const restartButton = document.getElementById('restart-button');
-    const actionButtons = document.getElementById('action-buttons');
 
     if(multiplyer === 2.5){
         outcome.textContent = "Player Blackjack!";
@@ -92,7 +91,7 @@ function playerWin(multiplyer){
 
     gameState.balance += multiplyer * gameState.bet;
     updateBalanceDisplay();
-    actionButtons.style.display = "none"
+    hideAction();
     restartButton.style.display = 'flex';
 }
 
@@ -100,11 +99,9 @@ function playerWin(multiplyer){
 function playerLose(){
     const restartButton = document.getElementById('restart-button');
     const outcome = document.getElementById('outcome-field');
-    const buttons = document.getElementById('action-buttons')
-    const betBalance= document.getElementById('bet-balance-container');
 
-    //betBalance.style.display = 'none';
-    buttons.style.display = 'none';
+    hideBet();
+    hideAction();
 
     outcome.textContent = "You Lost!";
     outcome.style.display = 'flex';
@@ -126,14 +123,22 @@ function push(){
 }
 
 function checkBlackjack(){
+    hideAction();
     if(gameState.dealerTotal === 21 && gameState.playerTotal === 21){
         push()
+        revealDealerCard();
+        return true;
     }
     else if(gameState.dealerTotal === 21){
         playerLose();
+        revealDealerCard();
+        return true;
     }else if(gameState.playerTotal === 21){
         playerWin(blackjackMult);
+        revealDealerCard();
+        return true;
     }
+    return false;
 }
 
 function sleep(ms) {

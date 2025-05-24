@@ -1,11 +1,11 @@
 import { addCardToHand, playerBust } from './hand.js';
-import { calculateValueSum } from './ui.js';
+import { calculateValueSum, showAction } from './ui.js';
 import { fillDeck, shuffle } from './deck.js';
 import { playerAction, checkWinner, checkBlackjack, sleep} from './gameLogic.js';
 import { Card } from './card.js';
 import {doubleBet } from './money.js';
 
-export let deck = [];
+
 
 export let gameState = {
     playerAces: 0,
@@ -16,7 +16,8 @@ export let gameState = {
     balance: 1000,
     bet: 0,
     dealerHand:[],
-    playerHand:[]
+    playerHand:[],
+    deck:[]
 };
 
 
@@ -24,21 +25,23 @@ export const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q
 export const suits = ["Club", "Spade", "Heart", "Diamond"];
 
 async function startGame() {
-
-    fillDeck(deck, ranks, suits);
-    shuffle(deck);
+    gameState.deck = [];
+    fillDeck(gameState.deck, ranks, suits);
+    shuffle(gameState.deck);
 
     for (let i = 0; i < 2; i++) {
 
-        let playerCard = deck.pop();
+        let playerCard = gameState.deck.pop();
         await addCardToHand("player-cards", playerCard, gameState.playerHand);
 
-        let dealerCard = deck.pop();
+        let dealerCard = gameState.deck.pop();
         await addCardToHand("dealer-cards", dealerCard, gameState.dealerHand);
     }
 
-    checkBlackjack();
-    document.getElementById('action-buttons').style.display = "flex";
+    if(!checkBlackjack()){
+        showAction();
+    }
+    
 
 }
 

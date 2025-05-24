@@ -53,11 +53,12 @@
 }
 
 .action-buttons {
+    align-items: flex-end;
+    pointer-events: auto; /* Re-enable pointer interaction */
     display: none;
-    flex-direction: row;   /* Puts buttons side by side */
-    gap: 10px;             /* Adds space between buttons */
-    justify-content: center; /* Optional: centers buttons horizontally */
-    margin-top: 20px;      /* Optional: space above buttons */
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
 }
 
 .value-container {
@@ -83,6 +84,22 @@
     width: fit-content; /* makes the div fit the text */
     border-radius: 5px; /* rounded corners (optional but looks nice) */
     background-color: #f0f0f0; /* optional, light background */
+}
+
+.bet-balance-container{
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.controls-wrapper {
+  position: fixed;
+  top: 50%;
+  width: 80%; /* or try 70%, 60% */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
 }
 
 
