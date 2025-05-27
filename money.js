@@ -1,5 +1,5 @@
 import { addCardToHand, playerBust } from './hand.js';
-import { calculateValueSum, updateBalanceDisplay, hideBet } from './ui.js';
+import { calculateValueSum, updateBalanceDisplay, hideBet, playSound } from './ui.js';
 import { fillDeck, shuffle } from './deck.js';
 import {gameState, startGame} from './game.js';
 import { playerAction, checkWinner} from './gameLogic.js';
@@ -7,6 +7,8 @@ import { playerAction, checkWinner} from './gameLogic.js';
 
 function doubleBet(){
     if (gameState.balance >= gameState.bet) {
+        playSound('sounds/double.mp3');
+
         gameState.balance -= gameState.bet;
         gameState.bet *= 2;
         updateBalanceDisplay();

@@ -8,6 +8,7 @@
     <title>Game</title>
 </head>
 <body>
+<audio id="bg-music" src="sounds/background.mp3" loop></audio>
 <div class="main-layout">
   <!-- Left Column: Betting Controls -->
   <div class="left-column">
@@ -45,7 +46,7 @@
     <div class="dealer-hand">
       <h2>Dealer's Hand</h2>
       <div class="card-container" id="dealer-cards"></div>
-      <div class="value-container" id="dealer-value">Value: 0</div>
+      <div class="value-container" id="dealer-value"></div>
     </div>
 
     <div class="middle-text">Blackjack Pays 3 To 2</div>
@@ -53,7 +54,7 @@
     <div class="player-hand">
       <h2>Your Hand</h2>
       <div class="card-container" id="player-cards"></div>
-      <div class="value-container" id="player-value">Value: 0</div>
+      <div class="value-container" id="player-value"></div>
     </div>
   </div>
 

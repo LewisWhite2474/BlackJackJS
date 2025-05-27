@@ -41,15 +41,14 @@ function resetGame(){
 
     document.getElementById('player-cards').innerHTML = '';
     document.getElementById('dealer-cards').innerHTML = '';
+    document.getElementById('player-value').textContent = '';
+    document.getElementById('dealer-value').textContent = '';
     document.getElementById('winnings-field').textContent ='';
 
     restartButton.style.display = 'none';
     outcome.style.display = 'none';
 
     showBet();
-
-    calculateValueSum("player-cards");
-    calculateValueSum("dealer-cards");
 
     updateBalanceDisplay();
 }
@@ -88,7 +87,20 @@ function showAction(){
     document.getElementById('action-buttons').style.display = "flex";
 }
 
+window.addEventListener('click', () => {
+  const bgMusic = document.getElementById('bg-music');
+  if (bgMusic && bgMusic.paused) {
+    bgMusic.volume = 0.1; 
+    bgMusic.play();
+  }
+}, { once: true }); 
+
+function playSound(src) {
+  const sound = new Audio(src);
+  sound.play();
+}
+
 
 window.onload = updateBalanceDisplay;
 
-export { calculateValueSum, updateBalanceDisplay, revealDealerCard, showAction, hideBet, hideAction};
+export { calculateValueSum, updateBalanceDisplay, revealDealerCard, showAction, hideBet, hideAction, playSound};

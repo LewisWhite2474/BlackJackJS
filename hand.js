@@ -1,4 +1,4 @@
-import { calculateValueSum } from './ui.js';
+import { calculateValueSum, playSound } from './ui.js';
 import { sleep} from './gameLogic.js';
 import { gameState } from './game.js';
 
@@ -6,7 +6,8 @@ import { gameState } from './game.js';
 async function addCardToHand(containerId, card, hand) {
 
     await sleep(750);
-
+    playSound('sounds/cards.mp3');
+    
     if(card.getValue() === 11){
         if (containerId === "player-cards"){
             gameState.playerAces +=1; 

@@ -1,5 +1,5 @@
 import { addCardToHand, playerBust } from './hand.js';
-import {revealDealerCard, updateBalanceDisplay, hideAction, hideBet } from './ui.js';
+import {revealDealerCard, updateBalanceDisplay, hideAction, hideBet, playSound} from './ui.js';
 import {gameState} from './game.js';
 import {doubleBet } from './money.js';
 
@@ -35,7 +35,7 @@ async function playerAction(action){
             break;
         //split
         case "SP":
-            // Code block for value3
+            // Code block for split
             break;
         //no action
         default:
@@ -82,8 +82,10 @@ function playerWin(multiplyer){
     const winnings = document.getElementById('winnings-field');
 
     if(multiplyer === 2.5){
+        playSound('sounds/playerbj.mp3');
         outcome.textContent = "Player Blackjack!";
     }else{
+        playSound('sounds/dealerbust.mp3');
         outcome.textContent = "Dealer Bust!";
     }
 
@@ -105,8 +107,10 @@ function playerLose(bust){
     hideAction();
 
     if(bust){
+        playSound('sounds/playerbust.mp3');
         outcome.textContent = "You Busted!";
     }else{
+        playSound('sounds/dealerwin.mp3');
         outcome.textContent = "Dealer Wins!";
     }
     outcome.style.display = 'flex';
@@ -115,6 +119,8 @@ function playerLose(bust){
 }
 
 function push(){
+    playSound('sounds/push.mp3');
+
     const outcome = document.getElementById('outcome-field');
     const restartButton = document.getElementById('restart-button');
 
