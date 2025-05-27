@@ -1,9 +1,7 @@
-import { addCardToHand, playerBust } from './hand.js';
-import { calculateValueSum, showAction } from './ui.js';
+import { addCardToHand, } from './hand.js';
+import { showAction } from './ui.js';
 import { fillDeck, shuffle } from './deck.js';
-import { playerAction, checkWinner, checkBlackjack, sleep} from './gameLogic.js';
-import { Card } from './card.js';
-import {doubleBet } from './money.js';
+import { playerAction, checkBlackjack, sleep} from './gameLogic.js';
 
 
 

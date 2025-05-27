@@ -4,7 +4,6 @@ import { fillDeck, shuffle } from './deck.js';
 import {gameState, startGame} from './game.js';
 import { playerAction, checkWinner} from './gameLogic.js';
 
-document.getElementById('place-bet-button').addEventListener('click', handleBetPlacement);
 
 function doubleBet(){
     if (gameState.balance >= gameState.bet) {
@@ -17,7 +16,7 @@ function doubleBet(){
         alert("Not enough balance to double the bet.");
     }
 }
-// ✅ Pure function for handling bet placement
+
 function handleBetPlacement() {
 
     const betInput = document.getElementById('bet-display');
@@ -73,7 +72,7 @@ function addBet(amount){
 }
 
 // ✅ Attach once to the button on load
-document.getElementById('place-bet-button').addEventListener('click', handleBetPlacement);
+document.getElementById('bet-button').addEventListener('click', handleBetPlacement);
 
 
 

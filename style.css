@@ -1,12 +1,40 @@
 .center-container {
-    background-color: bisque;
+    background-color: #121212;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Fill entire viewport height */
-    width: 100vw;  /* Full width (optional) */
+    height: 100vh;
+    width: 100vw;  
     box-sizing: border-box;  
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  overflow:hidden;
+  background-color: #1C1C1C;
+}
+.left-column,
+.center-column,
+.right-column {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+body {
+  color: #d100ff;
+  text-shadow: 0 0 5px #d100ff, 0 0 10px #d100ff, 0 0 20px #ff00ff;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden; 
+  box-sizing: border-box;
 }
 
 .center-button {
@@ -20,45 +48,74 @@
     font-weight: bold;
     margin-bottom: 20px;  
 }
-.table-area {
-    background-color: bisque;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Fill entire viewport height */
-    width: 100vw;  /* Full width (optional) */
-    box-sizing: border-box;  
+
+.left-column {
+  background-color: #111; /* or keep it #1C1C1C */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
+.center-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-column {
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .card-container{
-    display: flex;
-    font-size: 16px;
-    flex-direction: row;  /* This is actually default, but safe to be explicit */
-    gap: 10px;            /* Adds space between cards */
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  height: 130px; /* or whatever fits your cards */
+  justify-content: center;
+  align-items: center;
+      
 }
 
 .card {
-    width: 80px;
-    height: 120px;
-    border: 2px solid black;
-    border-radius: 8px;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    font-weight: bold;
-    margin:8px;
+  width: 80px;
+  height: 120px;
+  border: 2px solid violet;
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px violet, 0 0 20px #d100ff;
+  margin: 8px;
+  overflow: hidden;
 }
-
+.card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; 
+  border-radius: 4px;
+}
 .action-buttons {
     align-items: flex-end;
-    pointer-events: auto; /* Re-enable pointer interaction */
+    pointer-events: auto; 
     display: none;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     padding: 20px;
+}
+.outcome-field{
+    display:none;
+    margin-bottom: 50%;
+    font-size: 300%;
+}
+.winnings-field{
+    margin-bottom: 50%;
+    font-size: 200%;
 }
 
 .value-container {
@@ -66,40 +123,112 @@
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    color: black;
+    color: white;
 }
 
-#bet-container, #balance-container {
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
+.balance-container {
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  color: violet; /* Or neon purple */
 }
 
 #restart-button {
-    margin-top: 50px; /* pushes it down */
-    padding: 10px 20px; /* adds some space inside the div */
-    border: 2px solid black; /* gives it a black border */
-    display: none; /* keep it hidden until shown by JS */
-    cursor: pointer; /* makes it look clickable */
-    text-align: center; /* centers the text */
-    width: fit-content; /* makes the div fit the text */
-    border-radius: 5px; /* rounded corners (optional but looks nice) */
-    background-color: #f0f0f0; /* optional, light background */
+    display: none; 
 }
 
-.bet-balance-container{
-  align-items: flex-start;
+.controls-wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
 }
-.controls-wrapper {
-  position: fixed;
-  top: 50%;
-  width: 80%; /* or try 70%, 60% */
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+
+.chip {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 5px solid white;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  line-height: 70px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  transition: transform 0.1s ease-in-out;
+}
+
+.logic-button{
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  cursor: pointer;
+  background-color: purple;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  text-shadow: 0 0 5px #d100ff, 0 0 10px #d100ff, 0 0 20px #ff00ff;
+}
+.logic-button:disabled {
+  background-color: #555; 
+  color: #aaa;
+  cursor: not-allowed;
+  box-shadow: none;
+  text-shadow: none;
+  opacity: 0.6; 
+}
+button {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  box-shadow: 0 4px 15px #ff00ff;
+}
+
+button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px #d100ff;
+}
+
+.middle-text{
+    padding:50px;
+    font-size: 40px;
+}
+.chip:hover {
+  transform: scale(1.1);
+}
+
+.red {
+  background-color: #ff003c;
+  box-shadow: 0 0 10px #d100ff, 0 0 20px #d100ff, 0 0 40px #d100ff;
+}
+
+.orange {
+  background-color: orange;
+  box-shadow: 0 0 10px #d100ff, 0 0 20px #d100ff, 0 0 40px #d100ff;
+}
+
+.blue {
+  background-color: #00c3ff;
+  box-shadow: 0 0 10px #d100ff, 0 0 20px #d100ff, 0 0 40px #d100ff;
+}
+
+.green {
+  background-color: #39ff14;
+  box-shadow: 0 0 10px #d100ff, 0 0 20px #d100ff, 0 0 40px #d100ff;
+}
+
+.black {
+  background-color: #1a1a1a;
+  box-shadow: 0 0 10px #d100ff, 0 0 20px #d100ff, 0 0 40px #d100ff;
+}
+
+#bet-container-wrapper {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Adjust space between chips and button */
+  margin-top: 10px; /* Push the button down more */
 }
 
 

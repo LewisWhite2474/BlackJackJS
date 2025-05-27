@@ -1,14 +1,11 @@
 import { calculateValueSum } from './ui.js';
-import { fillDeck, shuffle } from './deck.js';
-import { playerAction, checkWinner, sleep} from './gameLogic.js';
-import { Card } from './card.js';
+import { sleep} from './gameLogic.js';
 import { gameState } from './game.js';
-import {doubleBet } from './money.js';
 
   
 async function addCardToHand(containerId, card, hand) {
 
-    await sleep(1000);
+    await sleep(750);
 
     if(card.getValue() === 11){
         if (containerId === "player-cards"){

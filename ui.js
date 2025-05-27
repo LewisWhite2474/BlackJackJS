@@ -1,9 +1,5 @@
-import { addCardToHand, playerBust } from './hand.js';
-import { fillDeck, shuffle } from './deck.js';
-import { playerAction, checkWinner, sleep} from './gameLogic.js';
-import { Card } from './card.js';
+import {sleep} from './gameLogic.js';
 import { gameState} from './game.js';
-import {doubleBet } from './money.js';
 
 const restartButton = document.getElementById('restart-button');
 
@@ -45,6 +41,7 @@ function resetGame(){
 
     document.getElementById('player-cards').innerHTML = '';
     document.getElementById('dealer-cards').innerHTML = '';
+    document.getElementById('winnings-field').textContent ='';
 
     restartButton.style.display = 'none';
     outcome.style.display = 'none';
@@ -58,8 +55,8 @@ function resetGame(){
 }
 
 async function revealDealerCard() {
-    await sleep(3000);
-    
+    await sleep(750);
+
     const cardDiv = document.getElementById("hidden-dealer-card");
     const secondCard = gameState.dealerHand[1];
 
@@ -77,20 +74,11 @@ async function revealDealerCard() {
 }
 
 function hideBet(){
-    document.getElementById('bet-container').style.display = "none";
-    //document.getElementById('bet-display').style.display = "none";
+    document.getElementById('bet-container-wrapper').style.display = "none";
 }
 
 function showBet(){
-    document.getElementById('bet-container').style.display = "flex";
-    // const betBalance = document.getElementById('bet-balance-container');
-
-    // document.getElementById('place-bet-button').style.display = "flex";
-    // document.getElementById('bet-display').style.display = "flex";
-    // document.getElementById('bet-display').textContent = '';
-    
-    // betBalance.style.display = 'flex';
-
+    document.getElementById('bet-container-wrapper').style.display = "flex";
 }
 
 function hideAction(){

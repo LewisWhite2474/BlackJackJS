@@ -8,55 +8,62 @@
     <title>Game</title>
 </head>
 <body>
-    <div class="table-area">
-        <div class="dealer-hand">
-            <h2>Dealer's Hand</h2>
-            <div class="card-container" id="dealer-cards">
-                <!-- Dealer cards will be shown here -->
-            </div>
-            <div class="value-container" id="dealer-value">Value: 0</div>
+<div class="main-layout">
+  <!-- Left Column: Betting Controls -->
+  <div class="left-column">
+    <div class="controls-wrapper">
+      <!-- Balance + Bet Display -->
+      <div class="balance-container">
+        Balance: $<span id="balance-display">1000</span><br>
+        Bet: $<span id="bet-display">0</span>
+      </div>
+
+      <!-- Chips + Place Bet -->
+      <div id="bet-container-wrapper">
+        <div id="bet-container">
+          <button id="25-button" class="chip green">+25</button>
+          <button id="50-button" class="chip blue">+50</button>
+          <button id="100-button" class="chip red">+100</button>
+          <button id="250-button" class="chip black">+250</button>
+          <button id="500-button" class="chip orange">+500</button>
         </div>
-    
-        <div class="player-hand">
-            <h2>Your Hand</h2>
-            <div class="card-container" id="player-cards">
-                <!-- Player cards will be shown here -->
-            </div>
-            <div class="value-container" id="player-value">Value: 0</div>
-        </div>
+        <button id="bet-button" class="logic-button">Place Bet</button>
+      </div>
 
+      <!-- Action Buttons -->
+      <div id="action-buttons" class="action-buttons">
+        <button id="hit-button" class="logic-button">Hit</button>
+        <button id="stand-button" class="logic-button">Stand</button>
+        <button id="double-button" class="logic-button">Double</button>
+        <button id="split-button" class="logic-button" disabled>Split</button>
+      </div>
+    </div>
+  </div>
 
+  <!-- Center Column: Game Table -->
+  <div class="center-column">
+    <div class="dealer-hand">
+      <h2>Dealer's Hand</h2>
+      <div class="card-container" id="dealer-cards"></div>
+      <div class="value-container" id="dealer-value">Value: 0</div>
+    </div>
 
-            <div class="controls-wrapper">
-                <div id="bet-balance-container">
-                    <div id="balance-container">
-                        Balance: $<span id="balance-display">1000</span>
-                        Bet: $<span id="bet-display">0</span>
-                    </div>
+    <div class="middle-text">Blackjack Pays 3 To 2</div>
 
-                    <div id="bet-container">
-                        <button id="25-button" class="game-button">+25</button>
-                        <button id="50-button" class="game-button">+50</button>
-                        <button id="100-button" class="game-button">+100</button>
-                        <button id="250-button" class="game-button">+250</button>
-                        <button id="500-button" class="game-button">+500</button>
+    <div class="player-hand">
+      <h2>Your Hand</h2>
+      <div class="card-container" id="player-cards"></div>
+      <div class="value-container" id="player-value">Value: 0</div>
+    </div>
+  </div>
 
-
-                        <button id="place-bet-button">Place Bet</button>
-                    </div>
-                </div>
-            
-            <div class="action-buttons" id="action-buttons">
-                <button id="hit-button" class="center-button" >Hit</button>
-                <button id="stand-button" class="center-button" >Stand</button>
-                <button id="split-button" class="center-button" disabled>Split</button>
-                <button id="double-button" class="center-button">Double</button>
-            </div>    
-        </div>
-
-        <div id ="outcome-field" style="display: none">You Lost!</div>
-        <button id="restart-button" style="display: none">Press to restart</button>    
-    </div>   
+  <!-- Right Column: Outcome -->
+  <div class="right-column">
+    <div id="outcome-field" class="outcome-field">You Lost!</div>
+    <div id="winnings-field" class="winnings-field"></div>
+    <button id="restart-button" class="logic-button">Press to restart</button>
+  </div>
+</div>
     <script type="module" src="game.js"></script>
 </body>
 </html>
